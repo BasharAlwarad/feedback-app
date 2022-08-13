@@ -1,0 +1,7 @@
+div.x.x1 {
+  background: white;
+  grid-area: x1;
+  /* grid-column: 2 / 8; */
+  /* grid-row: 1 / 2; */
+  animation: white 10s infinite ease-in-out;
+}
