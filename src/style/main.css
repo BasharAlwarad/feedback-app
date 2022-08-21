@@ -1,0 +1,13 @@
+div.x.x3 {
+  background: aqua;
+  grid-area: x5;
+  gap: 1px;
+  display: grid;
+}
+
+.grass {
+  background: rgba(67, 76, 109, 0.413);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

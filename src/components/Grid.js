@@ -1,17 +1,20 @@
 import React, { useState } from 'react'
 import Nav from './Nav'
 import Main from './Main'
+import Footer from './Footer'
 
 const Grid = () => {
-  const [name, setName] = useState({ f: '', l: '', email: '' })
-  let keys = Object.keys(name)
+  const [user, setUser] = useState({})
+  const [page, setPage] = useState(Number)
+
+  let keys = Object.keys(user)
   return (
     <>
       <div className='grid'>
-        <Nav setName={setName} name={name} />
+        <Nav setUser={setUser} user={user} page={page} setPage={setPage} />
         <div className='x x2'>
           <div className='x x6'>
-            {Object.values(name).map(
+            {Object.values(user).map(
               (e, i) =>
                 e && (
                   <div key={i}>
@@ -21,10 +24,10 @@ const Grid = () => {
             )}
           </div>
         </div>
-        <Main />
+        <Main page={page} />
         <div className='x x4'></div>
         <div className='x x5'></div>
-        <div className='x x7'></div>
+        <Footer />
       </div>
     </>
   )

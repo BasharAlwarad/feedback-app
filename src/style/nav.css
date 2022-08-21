@@ -1,7 +1,32 @@
 div.x.x1 {
   background: white;
   grid-area: x1;
-  /* grid-column: 2 / 8; */
-  /* grid-row: 1 / 2; */
-  animation: white 10s infinite ease-in-out;
+
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+}
+ 
+div.x.x1 form{
+  padding: .7rem;
+  display:flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+div.x.x1 .nav-buttons{
+  padding: .7rem;
+  display: flex;
+  gap: 1rem;
+
+}
+
+div.x.x1 .nav-buttons>*{
+  cursor: pointer;
+  padding: .2rem;
+  border-radius: .2rem;
+  user-select: none;
+  border: 1px solid black;
 }

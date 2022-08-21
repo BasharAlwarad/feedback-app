@@ -1,38 +1,53 @@
-const Nav = ({ name, setName }) => {
-  const onInput = e => {
-    e.preventDefault()
-    switch (e.target.name) {
-      case 'fname':
-        setName({ ...name, f: e.target.value })
-        break
-      case 'lname':
-        setName({ ...name, l: e.target.value })
-        break
-      case 'email':
-        setName({ ...name, email: e.target.value })
-        break
+import { useState, useEffect } from 'react'
+const Nav = ({ user, setUser, page, setPage }) => {
+  const onInput = e =>
+    setUser({ ...user, ...{ [e.target.name]: e.target.value } })
 
-      default:
-        break
+  const onClick = e => {
+    e.preventDefault()
+    if (e.target.getAttribute('class') === 'next') {
+      setPage(pre => pre + 25)
+    } else {
+      if (page >= 25) {
+        setPage(pre => pre - 25)
+      } else {
+        return null
+      }
     }
+  }
+
+  const onSubmit = e => {
+    e.preventDefault()
+    console.log(user)
   }
 
   return (
     <div className='x x1'>
-      <form action='submit'>
-        <label htmlFor='Name'>First Name</label>
-        <input autoFocus name='fname' type='text' onInput={e => onInput(e)} />
-        <label htmlFor='Name'>Last Name</label>
-        <input name='lname' type='text' onInput={e => onInput(e)} />
-        <label htmlFor='Name'>Email</label>
-        <input name='email' type='email' onInput={e => onInput(e)} />
+      <div className='nav-buttons'>
+        <div className='previous' onClick={e => onClick(e)}>
+          Previous
+        </div>
+        <div className='next' onClick={e => onClick(e)}>
+          Next
+        </div>
+      </div>
+
+      <form action='submit' onSubmit={e => onSubmit(e)}>
+        <label htmlFor='First Name'>First Name</label>
+        <input
+          autoFocus
+          name='First Name'
+          type='text'
+          onInput={e => onInput(e)}
+        />
+        <label htmlFor='Last Name'>Last Name</label>
+        <input name='Last Name' type='text' onInput={e => onInput(e)} />
+        <label htmlFor='Email'>Email</label>
+        <input name='Email' type='email' onInput={e => onInput(e)} />
+        <button>Submit</button>
       </form>
-      {name.f}
-      {name.l}
-      {name.email}
     </div>
   )
 }
 
 export default Nav
-
