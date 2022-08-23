@@ -1,36 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Nav from './Nav'
 import Main from './Main'
+import Side from './Side'
 import Footer from './Footer'
+import { GridContext } from '../Context/GridContext'
 
-const Grid = () => {
-  const [user, setUser] = useState({})
-  const [page, setPage] = useState(Number)
+export default function Grid() {
+  const [user, setUser] = useState(null)
+  const [page, setPage] = useState(null)
 
-  let keys = Object.keys(user)
   return (
-    <>
+    <GridContext.Provider value={{ user, setUser, page, setPage }}>
       <div className='grid'>
-        <Nav setUser={setUser} user={user} page={page} setPage={setPage} />
-        <div className='x x2'>
-          <div className='x x6'>
-            {Object.values(user).map(
-              (e, i) =>
-                e && (
-                  <div key={i}>
-                    {keys[i]}: {e}
-                  </div>
-                )
-            )}
-          </div>
-        </div>
-        <Main page={page} />
+        <Nav />
+        <Side />
+        <Main />
         <div className='x x4'></div>
         <div className='x x5'></div>
         <Footer />
       </div>
-    </>
+    </GridContext.Provider>
   )
 }
-
-export default Grid

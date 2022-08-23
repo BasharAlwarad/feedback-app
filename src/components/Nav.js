@@ -1,12 +1,17 @@
-import { useState, useEffect } from 'react'
-const Nav = ({ user, setUser, page, setPage }) => {
+import { useEffect, useRef, useContext } from 'react'
+import { GridContext } from '../Context/GridContext'
+
+const Nav = () => {
+  const { user, setUser, page, setPage } = useContext(GridContext)
+  const renderCount = useRef(1)
+
   const onInput = e =>
     setUser({ ...user, ...{ [e.target.name]: e.target.value } })
 
   const onClick = e => {
-    e.preventDefault()
     if (e.target.getAttribute('class') === 'next') {
       setPage(pre => pre + 25)
+      console.log(page)
     } else {
       if (page >= 25) {
         setPage(pre => pre - 25)
@@ -21,6 +26,12 @@ const Nav = ({ user, setUser, page, setPage }) => {
     console.log(user)
   }
 
+  useEffect(() => {
+    return () => {
+      renderCount.current = renderCount.current + 1
+    }
+  })
+
   return (
     <div className='x x1'>
       <div className='nav-buttons'>
@@ -30,6 +41,7 @@ const Nav = ({ user, setUser, page, setPage }) => {
         <div className='next' onClick={e => onClick(e)}>
           Next
         </div>
+        <div className='render'>{renderCount.current}</div>
       </div>
 
       <form action='submit' onSubmit={e => onSubmit(e)}>

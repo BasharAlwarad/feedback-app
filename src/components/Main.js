@@ -1,8 +1,12 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef, useContext, useMemo } from 'react'
+import { GridContext } from '../Context/GridContext'
 import axios from 'axios'
 
-const Main = ({ page }) => {
-  const [arr, setArr] = useState()
+const Main = () => {
+  const [arr, setArr] = useState([])
+  const { page } = useContext(GridContext)
+
+  const dataRef = useRef([])
 
   const createArr = num => {
     num = Math.floor(Math.sqrt(num)) * Math.floor(Math.sqrt(num))
@@ -39,13 +43,20 @@ const Main = ({ page }) => {
     return rowArr.join(' ')
   }
 
-  useEffect(() => {
-    (async () => {
+  const pokemonList = useMemo(
+    () => async () => {
       const { data } = await axios.get(
         `https://pokeapi.co/api/v2/pokemon?offset=${page}&limit=25`
       )
       setArr(data.results)
-    })()
+    },
+    [page]
+  )
+
+  useEffect(() => {
+    pokemonList()
+    dataRef.current = arr
+    return () => pokemonList()
   }, [page])
 
   return (
