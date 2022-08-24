@@ -19,10 +19,10 @@ div.grid {
   display: grid;
   /* gap: 0.5vw; */
   grid:
-    [nav] 'x2 x1 x1' minmax(10vh, auto) [nav]
-    [main] 'x2 x5  x5' minmax(65vh, auto) [main]
-    [footer] ' x7 x7 x3' minmax(20vh, auto) [footer]
-    [footer] 'x4 x4  x3' minmax(5vh, auto) [footer]
+    [nav] 'x2 x4 x4' minmax(10vh, auto) [nav]
+    [main] 'x2 x3  x3' minmax(65vh, auto) [main]
+    [footer] ' x7 x7 x5' minmax(20vh, auto) [footer]
+    [footer] 'x1 x1  x1' minmax(5vh, auto) [footer]
     / auto 80vw 10vw;
 }
 
@@ -34,25 +34,16 @@ div.x {
 @import url('nav.css');
 @import url('main.css');
 @import url('footer.css');
-div.x.x2 {
-  background: yellow;
-  grid-area: x2;
-}
+@import url('side.css');
+@import url('reducer.css');
+@import url('todo.css');
 
-div.x.x4 {
-  background: lightskyblue;
-  grid-area: x4;
-}
-div.x.x5 {
-  background: mediumvioletred;
-  grid-area: x3;
-}
+
 div.x.x6 {
   background: red;
   grid-area: x6;
   grid-column: 2/3;
   grid-row: 2/2;
 }
-
 
 /* Grid component training end */

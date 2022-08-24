@@ -4,7 +4,7 @@ import { GridContext } from '../Context/GridContext'
 const Nav = () => {
   const { user, setUser, page, setPage } = useContext(GridContext)
   const renderCount = useRef(1)
-
+  
   const onInput = e =>
     setUser({ ...user, ...{ [e.target.name]: e.target.value } })
 

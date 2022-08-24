@@ -1,0 +1,13 @@
+div.x.x5 {
+  background: mediumvioletred;
+  grid-area: x5;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+div.x.x5>button{
+  min-width: 2rem;
+  min-height: 2rem;
+}

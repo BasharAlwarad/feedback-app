@@ -3,6 +3,8 @@ import Nav from './Nav'
 import Main from './Main'
 import Side from './Side'
 import Footer from './Footer'
+import Reducer from './Reducer'
+import Todo from './Todo'
 import { GridContext } from '../Context/GridContext'
 
 export default function Grid() {
@@ -15,8 +17,8 @@ export default function Grid() {
         <Nav />
         <Side />
         <Main />
-        <div className='x x4'></div>
-        <div className='x x5'></div>
+        <Todo/>
+        <Reducer />
         <Footer />
       </div>
     </GridContext.Provider>
